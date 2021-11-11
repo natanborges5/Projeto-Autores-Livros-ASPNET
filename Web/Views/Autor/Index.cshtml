@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Domain.Autores>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Autores</h1>
+
+<p>
+    <a asp-action="Create">Adicionar Autores</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sobrenome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataAniversario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataAniversario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })|
+                <a asp-controller="Livro" asp-action="Index" asp-route-id="@item.Id">Livros</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
